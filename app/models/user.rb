@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_a :friend
+  has_one :friend
   has_many :friendships
   has_many :participated_friends, through: :friendships, source: :friend
 end

@@ -1,21 +1,29 @@
 class FriendsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
-    @friend = Friend.new
+    if current_user.friend != nil
+      redirect_to root_path, alert: "你已创建胖友圈"
+    else
+      @friend = Friend.new
+    end
   end
 
   def create
     @friend = Friend.new(friend_params)
     @friend.user = current_user
     if @friend.save
-      ridirect_to friend_path
+      redirect_to root_path
     else
       render :new
     end
   end
 
-  def show
-    @friend = current.friend
+  def index
+    @friend = current_user.friend
   end
+
+
 
   private
     def friend_params
