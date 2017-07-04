@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_one :friend
   has_many :friendships
   has_many :participated_friends, through: :friendships, source: :friend
+
+  def is_friend?(friend)
+    participated_friends.include?(friend)
+  end
 end
