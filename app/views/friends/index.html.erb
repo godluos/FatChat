@@ -1,1 +1,6 @@
+<table class="table table-bordered">
 <%= @friend.name %>
+<% @users.each do |user| %>
+ <%= user.email %>
+ <% end %>
+ </table>
