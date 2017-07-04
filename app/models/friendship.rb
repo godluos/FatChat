@@ -1,3 +1,4 @@
 class Friendship < ApplicationRecord
-  bdlongs_to :user
+  belongs_to :friend
+  belongs_to :user
 end
