@@ -1,8 +1,7 @@
 <div>
-  <h2>和 <%= chat.with(current_user).name %> 的会话</h2>
-  <br>
+  <p><strong>和 <%= chat.with(current_user).name %> 的信息</strong></p>
   <em><%= chat.messages.last.body.truncate(50) %></em>
   <br>
-  <%= link_to '查看会话', chat_path(chat) %>
+  <%= link_to '查看信息', chat_path(chat) %>
   <hr>
 </div>

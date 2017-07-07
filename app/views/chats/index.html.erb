@@ -1,4 +1,26 @@
-<h1>你的会话</h1>
-<div class="col-centered">
+<h1>信息列表</h1>
+<div class="col-md-3">
+<table class="table">
+    <thead>
+      <tr>
+      <h4>好友列表</h4>
+      </tr>
+    </thead>
+    <tbody>
+    <% @friends.each do |friend| %>
+      <tr>
+        <td>
+          <%= link_to friend.name, new_message_path(reader_id: friend)%>
+        </td>
+        <td>
+          <%= link_to 'delete',friendship_path(friend), method: :delete,
+          class: 'btn btn-xs btn-danger', data: { confirm: "Delete this Friend?"}%>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-9">
   <%= render @chats %>
 </div>

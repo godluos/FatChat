@@ -1,4 +1,15 @@
-<p><%= message.body %></p>
-<p>at <strong><%= message.created_at %></strong><br>
-  by <strong><%= message.user.name %></strong></p>
+
+<div class="row">
+  <div class="col-md-2 pull-right">
+    <%= link_to 'delete',message_path, method: :delete,
+    class: 'btn btn-xs btn-default', data: { confirm: "删除这条信息?"}%>
+  </div>
+  <div class="col-md-10">
+    <p><%= message.body %></p>
+    <p>
+      by <strong><%= message.user.name %></strong>
+      at <%= message.created_at %>
+    </p>
+  </div>
+</div>
 <hr>

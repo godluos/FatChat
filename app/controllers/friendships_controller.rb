@@ -13,14 +13,6 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = current_user.friendships.find_by(friend_id: params[:id])
     @friendship.destroy
-
-    user=User.find(params[:id])
-    current_user.chats.each do |chat|
-      if (chat.users-[user, current_user]).blank?
-        chat.destroy
-      end
-    end
-
     flash[:success] = "删除好友成功"
     redirect_to chats_path
   end

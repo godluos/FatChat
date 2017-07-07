@@ -1,10 +1,8 @@
 <h1>New message to <%= @reader.name %></h1>
 
-<%= form_for @message do |f| %>
-  <%= hidden_field_tag 'reader_id', @reader.id %>
+<%= simple_form_for @message do |f| %>
 
-  <%= f.label :body %>
-  <%= f.text_area :body %>
+<%= f.input :body, :label => "信息内容" %>
 
-  <%= f.submit %>
+<%= f.submit "发送" %>
 <% end %>

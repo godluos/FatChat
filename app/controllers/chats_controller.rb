@@ -4,9 +4,11 @@ class ChatsController < ApplicationController
 
   def index
     @chats = Chat.participating(current_user).order('updated_at DESC')
+    @friends = current_user.friends
   end
-  def show    
+  def show
     @message = Message.new
+    @friends = current_user.friends
   end
 
   private

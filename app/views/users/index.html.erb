@@ -1,3 +1,35 @@
-<h1>Users</h1>
-
-<ul><%= render @users %></ul>
+<div class="panel panel-default">
+  <div class="panel-heading">联系人列表</div>
+  <div class="panel-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>创建时间</th>
+          <th>加好友</th>
+          <th>发信息</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <% unless current_user == user %>
+          <td><%= user.name %></td>
+          <td><%= user.updated_at %></td>
+          <td>
+          <% if !current_user.friends.include?(user) %>
+            <%= link_to "添加", friendships_path(:friend_id => user),
+            class: 'btn btn-xs btn-success', :method => :post %>
+            <% else %>
+              已经是好友了
+            <% end %>
+            <td><%= link_to '发送', new_message_path(reader_id: user),
+            class: 'btn btn-xs btn-primary'%></td>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

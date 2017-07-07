@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :find_chat!
+  before_action :find_chat!, except: [:destroy]
 
   def new
     redirect_to chat_path(@chat) and return if @chat
@@ -13,6 +13,12 @@ class MessagesController < ApplicationController
      @message.save!
      flash[:success] = "Your message was sent!"
      redirect_to chat_path(@chat)
+   end
+
+   def destroy
+     @message = Message.find(params[:id])
+     @message.destroy
+     redirect_to :back
    end
 
    private
