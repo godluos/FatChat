@@ -1,0 +1,15 @@
+<h1>和 <%= @chat.with(current_user).name %> 的会话</h1>
+
+<div id="chat-main">
+  <div id="chat-body">
+    <%= render @chat.messages %>
+  </div>
+
+  <%= form_for @message do |f| %>
+    <%= hidden_field_tag 'chat_id', @chat.id %>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+
+    <%= f.submit %>
+  <% end %>
+</div>
