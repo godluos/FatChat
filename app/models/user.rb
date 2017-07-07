@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   def name
-    email.spilt('@')[0]
+    email.split('@')[0]
   end
 
 end
