@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :sender_chats, class_name: 'chats', foreign_key: 'sender'
-  has_many :reader_chats, class_name: 'chats', foreign_key: 'reader'
+  has_many :sender_chats, class_name: 'chats', foreign_key: 'sender_id'
+  has_many :reader_chats, class_name: 'chats', foreign_key: 'reader_id'
   has_many :messages, dependent: :destroy
   has_many :friendships
   has_many :friends, :through => :friendships

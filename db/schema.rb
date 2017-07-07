@@ -17,7 +17,9 @@ ActiveRecord::Schema.define(version: 20170707094844) do
     t.integer  "reader_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [nil, "reader_id"], name: "index_chats_on_senter_id_and_reader_id", unique: true
+    t.index ["reader_id"], name: "index_chats_on_reader_id"
+    t.index ["sender_id", "reader_id"], name: "index_chats_on_sender_id_and_reader_id", unique: true
+    t.index ["sender_id"], name: "index_chats_on_sender_id"
   end
 
   create_table "friendships", force: :cascade do |t|

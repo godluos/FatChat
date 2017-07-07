@@ -1,0 +1,10 @@
+<h1>New message to <%= @reader.name %></h1>
+
+<%= form_for @message do |f| %>
+  <%= hidden_field_tag 'reader_id', @reader.id %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+
+  <%= f.submit %>
+<% end %>
